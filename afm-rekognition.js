@@ -1,6 +1,6 @@
 // Ancestor Face Match - Public Beta 0.2.001 - August 2020
 // Author Scott Genzer
-// All content is free to be used and distributed by anyone who wishes under the Creative Commons Attribution-Share-Alike License 3.0
+// All content is free to be used and distributed by anyone who wishes under the GNU General Public License v3.0
 // Attribution kindly requested.
 
 // calls Rekognition API
