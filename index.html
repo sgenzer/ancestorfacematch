@@ -1,0 +1,57 @@
+<!-- **************
+
+Ancestor Face Match - Public Beta 0.2.001 - August 2020
+Author Scott Genzer
+All content is free to be used and distributed by anyone who wishes under the Creative Commons Attribution-Share-Alike License 3.0
+Attribution kindly requested.
+
+************** -->
+
+<html>
+<head profile="http://www.w3.org/2005/10/profile">
+  <title>Ancestor Face Match</title>
+  <script src="https://sdk.amazonaws.com/js/aws-sdk-2.16.0.min.js"></script>
+  <script src="lightbox2-2.11.3/dist/js/lightbox-plus-jquery.js"></script>
+  <script src="afm-rekognition.js"></script>
+  <link rel="stylesheet" type="text/css" href="afm.css">
+  <link href='https://fonts.googleapis.com/css?family=Open Sans' rel='stylesheet'>
+  <link rel="stylesheet" type="text/css" href="lightbox2-2.11.3/src/css/lightbox.css">
+  <link rel="icon" type="image/png" href="images/AFM_icon.png">
+  <meta charset="UTF-8">
+
+</head>
+<body>
+  <div class="header">
+    <h1>Ancestor Face Match</h1>
+    <h4>Scott Genzer, August 2020</h4>
+    <h4>Public Beta 0.2.001, published 12 Aug 2020 19:20 UTC</h4>
+    <p style="font-size: 9px">
+      0.2.001: added Kremenets, Ukraine photos from Michael Snyder; added items to this header<br>
+      0.2.000: added USHMM Survivors; cleaned up CSS
+    </p>
+  </div>
+  <hr>
+  <div class="row">
+    <div class="column">
+      <h3>Step 1: Choose a Face Collection</h3>
+
+      <select class="collection" id="collection" name="collection">
+        <option value="afm-mielec-poland">Mielec, Poland</option>
+        <option value="afm-ushmm-survivors">U.S. Holocaust Museum</option>
+        <option value="afm-kremenets-ukraine">Kremenets (Кременець), Ukraine</option>
+      </select>
+    </div>
+    <div class="column">
+      <h3>Step 2: Upload a face image</h3>
+      <input class="button" type="file" name="fileToUpload" id="fileToUpload" accept="image/*" onchange="importFileandPreview()"><br><br>
+      <img class="previewImage" style="width: 150px" src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" alt="Image preview...">
+    </div>
+    <div class="column">
+      <h3>Step 3: Click Submit</h3>
+      <button class="button" onclick="ProcessImage()">Submit</button><br><br>
+    </div></div>
+    <h2 style="margin-left: 20px">Match Results</h2>
+    <p><p id="opResult"></p>
+  </div>
+</body>
+</html>

@@ -1,0 +1,85 @@
+/*
+
+Ancestor Face Match - Public Beta 0.2.001 - August 2020
+Author Scott Genzer
+All content is free to be used and distributed by anyone who wishes under the Creative Commons Attribution-Share-Alike License 3.0
+Attribution kindly requested.
+
+*/
+
+* {
+  box-sizing: border-box;
+  font-family: "Open Sans", Helvetica, Arial;
+}
+
+body {
+  background-color: white;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-left: 30px;
+}
+
+h1.header {
+  color: white;
+}
+
+p {
+  font-family: 'Open Sans';
+  font-size: 20px;
+}
+
+/* Style the header */
+
+.header {
+  padding: 10px;
+  text-align: center;
+  background-color: #56089e;
+  color: white;
+}
+
+/* Create three equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 15px;
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.button {
+  text-align: center;
+  padding: 5px;
+}
+
+.collection {
+  text-align: center;
+  padding: 5px;
+}
+
+.resultsTable {
+  border-collapse: collapse;
+  width: 75%;
+  margin-left: 20px;
+  text-align: center;
+}
+
+.resultsTable th, td {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  padding-left: 5px;
+  border: 1px solid black;\
+}
+
+.resultsTable th {
+  background-color: #56089e;
+  color: white;
+}
+
+.resultsTable img {
+  max-height: 150px;
+}
