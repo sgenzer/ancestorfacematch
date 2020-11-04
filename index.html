@@ -1,6 +1,6 @@
 <!-- **************
 
-Ancestor Face Match - Public Beta 0.2.001 - August 2020
+Ancestor Face Match - Public Beta 0.2.003 - November 2020
 Author Scott Genzer
 All content is free to be used and distributed by anyone who wishes under the GNU GPLv3 License.
 Attribution kindly requested.
@@ -23,9 +23,11 @@ Attribution kindly requested.
 <body>
   <div class="header">
     <h1>Ancestor Face Match</h1>
-    <h4>Scott Genzer, August 2020</h4>
-    <h4>Public Beta 0.2.001, published 12 Aug 2020 19:20 UTC</h4>
+    <h4>Scott Genzer, November 2020</h4>
+    <h4>Public Beta 0.2.003, published 4 November 2020 14:20 UTC</h4>
     <p style="font-size: 9px">
+      0.2.003: added links to GitHub and RapidMiner on footer<br>
+      0.2.002: added Lublin, Poland from Osrodek Brama Grodzka ‐ Teatr NN - Rynek 4 collection<br>
       0.2.001: added Kremenets, Ukraine photos from Michael Snyder; added items to this header<br>
       0.2.000: added USHMM Survivors; cleaned up CSS
     </p>
@@ -36,6 +38,7 @@ Attribution kindly requested.
       <h3>Step 1: Choose a Face Collection</h3>
 
       <select class="collection" id="collection" name="collection">
+        <option value="afm-lublin-poland">Lublin, Poland</option>
         <option value="afm-mielec-poland">Mielec, Poland</option>
         <option value="afm-ushmm-survivors">U.S. Holocaust Museum</option>
         <option value="afm-kremenets-ukraine">Kremenets (Кременець), Ukraine</option>
@@ -55,8 +58,16 @@ Attribution kindly requested.
   </div>
   <br><br><br><br>
   <footer>
-  This site was created by Scott Genzer. All code is licensed under GNU GPLv3 and available on <a href="https://github.com/sgenzer/ancestorfacematch">https://github.com/sgenzer/ancestorfacematch</a>
-  . You can contact me via the <a href="https://mielec-yidn.org">Mielec Yidn</a> Contact Page.
+  <h3>Want to do this yourself? Here are a couple of ways...</h3>
+  <div class="footerList">
+    <ul>
+      <li>For coders: all code is licensed under GNU GPLv3 and available on <a href="https://github.com/sgenzer/ancestorfacematch">https://github.com/sgenzer/ancestorfacematch</a></li>
+      <li>For non-coders: RapidMiner will soon release a new extension to RapidMiner Studio called "AWS Services" which will have a drag-and-drop operator to compare two faces. You can
+      learn how to use this tool with step-by-step instructions for mere mortals here: <a href="https://community.rapidminer.com/discussion/58092/compare-faces-with-aws-rekognition-in-rapidminer-studio">
+        Compare Faces with AWS Rekognition in RapidMiner Studio</a></li>
+      </ul>
+    </div>
+  <p style="font-size: 12pt">This site was created by Scott Genzer. You can contact me via the <a href="https://mielec-yidn.org">Mielec Yidn</a> Contact Page.</p>
 </footer>
 </body>
 </html>
