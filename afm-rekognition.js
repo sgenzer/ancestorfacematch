@@ -1,7 +1,13 @@
-// Ancestor Face Match - Public Beta 0.2.001 - August 2020
+// Ancestor Face Match - Public Beta 0.2.005 - December 2020
 // Author Scott Genzer
-// All content is free to be used and distributed by anyone who wishes under the GNU General Public License v3.0
+// All content is free to be used and distributed by anyone who wishes under the GNU GPLv3 License.
 // Attribution kindly requested.
+
+// Various code snippets by Raphael Pinson (Github: raphink) kindly used with permission
+
+//*******************
+// *** BEGIN CODE ***
+//*******************
 
 // calls Rekognition API
 function SearchFacesByImage(collectionValue, imageData, callback) {
@@ -15,14 +21,21 @@ function SearchFacesByImage(collectionValue, imageData, callback) {
     },
     MaxFaces: 15
   };
+
+  console.log("collectionValue is " + collectionValue);
+
+// DOES NOT WORK
+// $('#loader').show();
+
   rekognition.searchFacesByImage(params, function (err, data) {
     if (err) {
       console.log(err, err.stack); // an error occurred
       document.getElementById("opResult").innerHTML = "Hmm an error occurred. Try again?";
-    } else if (data.FaceMatches.length == 0) {
-      document.getElementById("opResult").innerHTML = "No results found.";
+    } else if (collectionValue == 'afm-19cent-albums'){
+      var table = tableMakerPrivate(data, collectionValue);
+      document.getElementById("opResult").innerHTML = table;
     } else {
-      var table = tableMaker(data, collectionValue);
+      var table = tableMakerPublic(data, collectionValue);
       document.getElementById("opResult").innerHTML = table;
     }
   }
@@ -35,6 +48,12 @@ function ProcessImage() {
   var control = document.getElementById("fileToUpload");
   var collectionName = document.getElementById("collection").value;
   var file = control.files[0];
+
+  // reject images of size >= 5MB
+  if(file.size > 5242880){
+       alert("File is too big (5MB max)!");
+       return;
+   };
 
   // Load base64 encoded image
   var reader = new FileReader();
@@ -78,7 +97,7 @@ function AnonLog() {
   // Configure the credentials provider to use your identity pool
   AWS.config.region = 'us-east-1'; // Region
   AWS.config.credentials = new AWS.CognitoIdentityCredentials({
-    IdentityPoolId: 'us-east-xxxxxxx',
+    IdentityPoolId: 'us-east-1:297d6e43-a6cf-4548-9590-48f1e6b4af7e',
   });
   // Make the call to obtain credentials
   AWS.config.credentials.get(function () {
@@ -89,18 +108,23 @@ function AnonLog() {
   });
 }
 
-// adds a jpg file extension if there is no extension present
-function fileNameFixer(string) {
-  var ending = string.endsWith("png");
-  if(ending) return string;
-  else {
-    var newString = string + '.jpg';
-    return newString;
+// adds a jpg file extension if there is no extension present with some testing
+function fileNameFixer(fileString) {
+  console.log("filename string is " + fileString);
+  var endingPNG = fileString.endsWith("png");
+  var endingJPG = fileString.endsWith("jpg");
+  console.log("endingPNG is" + endingPNG);
+  console.log("endingJPG is" + endingJPG);
+  if(endingPNG||endingJPG) return fileString;
+  else
+  {
+    var newFileString = fileString + '.jpg';
+    return newFileString;
   }
 }
 
-// constructs the results table
-function tableMaker(data, collection) {
+// constructs the results table for public images
+function tableMakerPublic(data, collection) {
   var table = "<table class=\"resultsTable\"><tr><th>External File Name</th><th>Similarity</th><th>Image (click to enlarge)</th></tr>";
   for (var i = 0; i < data.FaceMatches.length; i++) {
     table += '<tr><td width="30%">' +
@@ -110,6 +134,20 @@ function tableMaker(data, collection) {
     '%</td><td><a href="https://' + collection + '.s3.amazonaws.com/' +
     fileNameFixer(data.FaceMatches[i].Face.ExternalImageId) + '" data-lightbox="resultImage"><img src="https://' + collection + '.s3.amazonaws.com/' +
     fileNameFixer(data.FaceMatches[i].Face.ExternalImageId) + '"></a></td></tr>';
+  }
+  table += "</table>";
+  return table;
+}
+
+// constructs the results table for private images
+function tableMakerPrivate(data, collection) {
+  var table = "<table class=\"resultsTable\"><tr><th>External File Name</th><th>Similarity</th><th>Image (click to enlarge)</th></tr>";
+  for (var i = 0; i < data.FaceMatches.length; i++) {
+    table += '<tr><td width="30%">' +
+    fileNameFixer(data.FaceMatches[i].Face.ExternalImageId) +
+    '</td><td>' +
+    data.FaceMatches[i].Similarity.toFixed(2) +
+    '%</td><td>** this image is private - please contact Michele Klein to view **</td></tr>';
   }
   table += "</table>";
   return table;
