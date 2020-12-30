@@ -1,6 +1,6 @@
 <!-- **************
 
-Ancestor Face Match - Public Beta 0.2.003 - November 2020
+Ancestor Face Match - Public Beta 0.2.005 - December 2020
 Author Scott Genzer
 All content is free to be used and distributed by anyone who wishes under the GNU GPLv3 License.
 Attribution kindly requested.
@@ -23,9 +23,11 @@ Attribution kindly requested.
 <body>
   <div class="header">
     <h1>Ancestor Face Match</h1>
-    <h4>Scott Genzer, November 2020</h4>
-    <h4>Public Beta 0.2.003, published 4 November 2020 14:20 UTC</h4>
+    <h4>Scott Genzer, December 2020</h4>
+    <h4>Public Beta 0.2.005, published 30 December 2020 16:00 UTC</h4>
     <p style="font-size: 9px">
+      0.2.005: added 19th Century Jewish Family Album Project; added Debica, Poland<br>
+      0.2.004: changed footer for RapidMiner AWS extension release; reordered menu<br>
       0.2.003: added links to GitHub and RapidMiner on footer<br>
       0.2.002: added Lublin, Poland from Osrodek Brama Grodzka ‐ Teatr NN - Rynek 4 collection<br>
       0.2.001: added Kremenets, Ukraine photos from Michael Snyder; added items to this header<br>
@@ -38,8 +40,10 @@ Attribution kindly requested.
       <h3>Step 1: Choose a Face Collection</h3>
 
       <select class="collection" id="collection" name="collection">
-        <option value="afm-lublin-poland">Lublin, Poland</option>
+        <option value="afm-19cent-albums">19th Century Jewish Family Album Project</option>
         <option value="afm-mielec-poland">Mielec, Poland</option>
+        <option value="afm-debica-poland">Debica, Poland</option>
+        <option value="afm-lublin-poland">Lublin, Poland</option>
         <option value="afm-ushmm-survivors">U.S. Holocaust Museum</option>
         <option value="afm-kremenets-ukraine">Kremenets (Кременець), Ukraine</option>
       </select>
@@ -53,7 +57,8 @@ Attribution kindly requested.
       <h3>Step 3: Click Submit</h3>
       <button class="button" onclick="ProcessImage()">Submit</button><br><br>
     </div></div>
-    <h2 style="margin-left: 20px">Match Results</h2>
+    <h2 style="margin-left: 20px">** MATCH RESULTS (Reload page to do another search) **</h2>
+    <div id="loader"></div>
     <p><p id="opResult"></p>
   </div>
   <br><br><br><br>
@@ -62,7 +67,7 @@ Attribution kindly requested.
   <div class="footerList">
     <ul>
       <li>For coders: all code is licensed under GNU GPLv3 and available on <a href="https://github.com/sgenzer/ancestorfacematch">https://github.com/sgenzer/ancestorfacematch</a></li>
-      <li>For non-coders: RapidMiner will soon release a new extension to RapidMiner Studio called "AWS Services" which will have a drag-and-drop operator to compare two faces. You can
+      <li>For non-coders: RapidMiner released a new extension to RapidMiner Studio called "AWS Services" which contains a drag-and-drop operator to compare two faces. You can
       learn how to use this tool with step-by-step instructions for mere mortals here: <a href="https://community.rapidminer.com/discussion/58092/compare-faces-with-aws-rekognition-in-rapidminer-studio">
         Compare Faces with AWS Rekognition in RapidMiner Studio</a></li>
       </ul>
